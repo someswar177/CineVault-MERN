@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --code-color: darkred;
+  --code-bg-color: #f6f6f6;
+  --code-font-size: 14px;
+  --code-line-height: 1.4;
+  --scroll-bar-color: #c5c5c5;
+  --scroll-bar-bg-color: #f6f6f6;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Outfit',sans-serif;
+  scroll-behavior: smooth;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scroll-bar-color) var(--scroll-bar-bg-color);
 }
 
-.App-header {
-  background-color: #282c34;
+
+*::-webkit-scrollbar {
+  height: 4px;
+  width: 2px;
+}
+
+
+*::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 15px;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+body{
+  min-width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  position: relative;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  overflow-x:hidden;
+  overflow-y: scroll;
+}
+
+img{
+  max-width: 100%;
+}
+
+.clap path{
+  fill: #FC4747;
+}
+
+
+.clap g {
+  fill: #161d2f;
+}
+
+.play fill{
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

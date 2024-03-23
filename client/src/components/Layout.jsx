@@ -56,7 +56,9 @@ const Layout = () => {
                             Login
                         </a>
                     )}
-                    
+                    {/* <Link to={"/profile"}>
+                        <img src="/images/demo1-avatar.jpg" className='w-10 border-2 rounded-full border-white' alt="" />
+                    </Link> */}
                 </div>
             </nav >
             <Outlet />

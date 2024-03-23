@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { FcClapperboard } from 'react-icons/fc'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+// import https from 'https';
 
 
 const SignUp = () => {
@@ -79,7 +80,7 @@ const SignUp = () => {
         if (error.email === "" && error.password === "" && error.repeatPassword === "" && user.email !== "" && user.password !== "" && user.repeatPass !== "") {
             const configuration = {
                 method: "post",
-                url: "http://localhost:3000/signup",
+                url: "http://localhost:4000/signup",
                 data: {
                     email,
                     password

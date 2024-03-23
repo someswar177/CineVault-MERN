@@ -1,22 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { useAuth } from "../AuthContext";
-import {useNavigate} from 'react-router-dom';
-import { FcClapperboard } from 'react-icons/fc';
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { FcClapperboard } from 'react-icons/fc'
+import { useAuth } from '../AuthContext.jsx';
 
-export default function Login(){
-    const [email,setEmail] = useState("");
-    const [password,setPassword] = useState("");
+
+
+
+const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    // const [user,setUser] = useState({})
     const [errorEmail, setErrorEmail] = useState("");
     const [errorPass, setErrorPass] = useState("");
     const [response, setResponse] = useState("");
-    const {user , login} = useAuth();
+    const { user, login } = useAuth();
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(user){
+    useEffect(() => {
+        if (user) {
             navigate('/')
         }
-    },[user,navigate,response])
+    }, [user, navigate, response]);
 
     function validateEmail(e) {
         const emailregx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -116,3 +121,5 @@ export default function Login(){
         </div>
     )
 }
+
+export default Login
