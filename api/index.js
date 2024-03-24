@@ -81,15 +81,21 @@ app.post('/login',async (req,res)=>{
 })
 
 app.get('/getuser',auth,async (req,res)=>{
-    console.log(req.user);
     const user = await User.findOne({_id:req.user.userId})
-    res.status(500).send({
+    console.log(user)
+    if (!user) {
+        return res.status(404).json({
+            message: "User not found"
+        });
+    }
+    res.status(200).send({
         user,
-        message:"you are authorized to access"
-    })
+        message: "You are authorized to access"
+    });
 })
 
-app.get('/addbookmark',auth,async (req,res)=>{
+app.post('/addbookmark',auth,async (req,res)=>{
+    console.log("this is from sever side /addbookmark  ")
     try{
         const newBookmark = new Bookmark({
             id:req.body.id,
@@ -104,15 +110,14 @@ app.get('/addbookmark',auth,async (req,res)=>{
             {new:true}
         );
         console.log(user);
-        // res.json(user);
+        res.json(user);
     }catch(error){
         console.error('Error adding bookmark:', error);
         res.status(500).json({ message: "Already added to bookmark", error: 'Internal Server Error' });
     }
 })
 
-app.get('/getbookmark',auth,async (req,res)=>{
-    console.log("this is getbookmark = ")
+app.get('/getbookmarks',auth,async (req,res)=>{
     console.log(req.user)
     try{
         const user = await User.find({_id:req.user.userId});
@@ -120,18 +125,18 @@ app.get('/getbookmark',auth,async (req,res)=>{
             res.status(404).json({ error: 'User not found' });
             return;
         }
-        console.log("user = ",user)
-        console.log("user bookmark = ",user[0].bookmarks);
+        // console.log("user = ",user)
+        // console.log("user bookmark = ",user[0].bookmarks);
 
         const allBookmarks = []
 
-        for(let i=0;i< user[0].bookmarks.length;i++){
+        for(let i=0;i< user[0].bookmarks.length;i++){ 
             let eachBookmark = await Bookmark.findById(user[0].bookmarks[i]);
-            console.log("eachbookamrk = ",eachBookmark);
+            // console.log("eachbookamrk = ",eachBookmark);
             allBookmarks.push(eachBookmark);
         }
-        console.log("allbookmarks = ",allBookmarks)
-        // res.json({allBookmarks})
+        // console.log("allbookmarks = ",allBookmarks)
+        res.json({allBookmarks})
     }catch(err){
         console.log(err)
         res.status(500).json({error:"Internal server error"});

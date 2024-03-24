@@ -19,12 +19,14 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuthentication = async () => {
       if (token) {
+        console.log("this is token from AuthContext.jsx : ",token)
         try {
           const response = await axios.get('http://localhost:3000/getuser', {
             headers: {
               Authorization: `Bearer ${token}`
             }
           });
+          console.log(response.data.user);
           setUser(response.data.user);
           setLoading(false);
         } catch (error) {

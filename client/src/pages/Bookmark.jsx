@@ -13,14 +13,14 @@ const Bookmark = () => {
 
   useEffect(() => {
     const getBookmarks = async () => {
+      console.log("this is from client side getbookmarks func")
       try {
         const result = await axios.get('http://localhost:3000/getbookmarks', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(result.data);
-        setBookmarks(result.data.bookmarksarr);
+        setBookmarks(result.data.allBookmarks);
       } catch (error) {
         navigate('/login');
         console.log(error);
@@ -40,6 +40,8 @@ const Bookmark = () => {
       bookmark.title.toLowerCase().includes(searchQuery.toLowerCase())
     )
     : bookmarks;
+
+    console.log(filteredBookmarks)
 
   return (
     <div className='bg-bgdarkb min-w-full min-h-screen pb-8 mt-16 lg:mt-0'>
