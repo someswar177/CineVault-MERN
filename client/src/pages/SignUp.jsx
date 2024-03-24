@@ -80,7 +80,7 @@ const SignUp = () => {
         if (error.email === "" && error.password === "" && error.repeatPassword === "" && user.email !== "" && user.password !== "" && user.repeatPass !== "") {
             const configuration = {
                 method: "post",
-                url: "http://localhost:4000/signup",
+                url: "http://localhost:3000/signup",
                 data: {
                     email,
                     password
