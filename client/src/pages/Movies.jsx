@@ -9,10 +9,15 @@ const Movies = () => {
   const [bolly, setBolly] = useState([]);
   const [tolly, setTolly] = useState([]);
   const [kolly, setKolly] = useState([]);
+  const [Molly, setMolly] = useState([]);
+  const [Sandal, setSandal] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const hindiMovieURl = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_original_language=hi`;
   const teluguMovieURL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_original_language=te`;
   const tamilMovieURL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_original_language=ta`;
+  const malayalamMovieURL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_original_language=ml`;
+  const kannadaMovieURL = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_original_language=kn`;
+
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -33,6 +38,16 @@ const Movies = () => {
     return res.data;
   };
 
+  const fetchMolly = async () => {
+    const res = await axios.get(malayalamMovieURL);
+    return res.data;
+  };
+
+  const fetchSandal = async () => {
+    const res = await axios.get(kannadaMovieURL);
+    return res.data;
+  };
+
   useEffect(() => {
     const fetchHindi = async () => {
       const hindi = await fetchBolly();
@@ -46,13 +61,25 @@ const Movies = () => {
 
     const fetchTamil = async () => {
       const tamil = await fetchKolly();
-      setKolly(tamil.results);
+      setMolly(tamil.results);
+    };
+
+    const fetchMalayalam = async () => {
+      const Malayalam = await fetchMolly();
+      setKolly(Malayalam.results);
+    };
+
+    const fetchKannada = async () => {
+      const Kannada = await fetchSandal();
+      setSandal(Kannada.results);
       setIsLoading(false);
     };
 
     fetchHindi();
     fetchTelugu();
     fetchTamil();
+    fetchMalayalam();
+    fetchKannada();
   }, []);
 
   return (
@@ -68,6 +95,8 @@ const Movies = () => {
                 <DisplaySlider title={'Movies In Hindi'} array={bolly} type={'Movie'} />
                 <DisplaySlider title={'Movies In Telugu'} array={tolly} type={'Movie'} />
                 <DisplaySlider title={'Movies In Tamil'} array={kolly} type={'Movie'} />
+                <DisplaySlider title={'Movies In Malayalam'} array={Molly} type={'Movie'} />
+                <DisplaySlider title={'Movies In Kannada'} array={Sandal} type={'Movie'} />
               </div>
             ) : (
               <div className='flex flex-wrap gap-4'>
