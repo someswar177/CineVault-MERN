@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { FcClapperboard } from 'react-icons/fc'
 import { BsFillGridFill } from 'react-icons/bs'
 import { MdLocalMovies } from 'react-icons/md'
@@ -15,7 +15,7 @@ const Layout = () => {
     const { token,user, logout } = useAuth();
     console.log(user);
     const location = useLocation();
-    const [rerenderKey, setRerenderKey] = useState(true);
+    // const [rerenderKey, setRerenderKey] = useState(true);
     const navigate = useNavigate();
 
 
