@@ -10,12 +10,13 @@ const Bookmark = () => {
   const [bookmarks, setBookmarks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
+  const apiUrl = process.env.RENDER_SERVER_API_KEY || 'http://localhost:8000';
 
   useEffect(() => {
     const getBookmarks = async () => {
       console.log("this is from client side getbookmarks func")
       try {
-        const result = await axios.get('http://localhost:3000/getbookmarks', {
+        const result = await axios.get(`${apiUrl}/getbookmarks`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -11,6 +11,7 @@ const SignUp = () => {
     const [error, setError] = useState({})
     const [response, setResponse] = useState("");
     const [register, setRegister] = useState(false);
+    const apiUrl = process.env.RENDER_SERVER_API_KEY || 'http://localhost:8000';
 
 
     const navigate = useNavigate();
@@ -80,7 +81,7 @@ const SignUp = () => {
         if (error.email === "" && error.password === "" && error.repeatPassword === "" && user.email !== "" && user.password !== "" && user.repeatPass !== "") {
             const configuration = {
                 method: "post",
-                url: "http://localhost:3000/signup",
+                url: `${apiUrl}/signup`,
                 data: {
                     email,
                     password

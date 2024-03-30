@@ -9,6 +9,7 @@ const Details = () => {
     const Location = useLocation();
     console.log(Location.pathname)
     console.log(Location.pathname.slice(1))
+    const apiUrl = process.env.RENDER_SERVER_API_KEY || 'http://localhost:8000';
 
     const id = () => {
         const pathname = Location.pathname;
@@ -68,7 +69,7 @@ const Details = () => {
 
         try {
             const response = await axios.post(
-                'http://localhost:3000/addbookmark',
+                `${apiUrl}/addbookmark`,
                 {
                     id,
                     poster_path,

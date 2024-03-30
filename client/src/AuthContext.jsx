@@ -13,6 +13,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const apiUrl = process.env.RENDER_SERVER_API_KEY || 'http://localhost:8000';
 
   const cookies = new Cookies();
   const token = cookies.get("TOKEN");
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         console.log("this is token from AuthContext.jsx : ",token)
         try {
-          const response = await axios.get('http://localhost:3000/getuser', {
+          const response = await axios.get(`${apiUrl}/getuser`, {
             headers: {
               Authorization: `Bearer ${token}`
             }
@@ -45,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:3000/login', {
+      const response = await axios.post(`${apiUrl}/login`, {
         email,
         password,
       });
