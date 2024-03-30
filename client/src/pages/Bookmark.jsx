@@ -6,7 +6,7 @@ import axios from 'axios';
 
 
 const Bookmark = () => {
-  const { user, token } = useAuth();
+  const { token } = useAuth();
   const [bookmarks, setBookmarks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();

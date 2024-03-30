@@ -3,7 +3,7 @@ import {MdLocalMovies} from 'react-icons/md'
 import {PiTelevisionBold} from 'react-icons/pi'
 import { Link, useLocation } from 'react-router-dom';
 
-const Card = ({id,img,title,year,type})=>{
+const Card = ({id,title,year,type,img})=>{
     const location = useLocation();
     
 

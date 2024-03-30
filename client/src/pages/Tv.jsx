@@ -66,7 +66,7 @@ const Tv = () => {
                             id={tv.id}
                             key={index}
                             title={tv.name}
-                            type={tv.media_type}
+                            // type={tv.media_type}
                             year={tv.first_air_date.slice(0, 4)}
                             img={`https://image.tmdb.org/t/p/original/${tv.poster_path}`}
                           />

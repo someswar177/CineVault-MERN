@@ -3,7 +3,7 @@ import { FiSearch } from 'react-icons/fi'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import axios from 'axios';
 
-const Search = ({ searchResults, setSearchResults, searchQuery, setSearchQuery }) => {
+const Search = ({ setSearchResults, searchQuery, setSearchQuery }) => {
     const searchMovies = async (query) => {
         const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
         const res = await axios.get(searchUrl);

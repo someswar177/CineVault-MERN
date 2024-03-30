@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const CardPoster = ({ id, img, title, year, type }) => {
+const CardPoster = ({ id, title, year, img }) => {
     return (
         <div className='relative flex-shrink-0 w-52 mt-4 transition duration-300 cursor-pointer ease-in-out hover:scale-105 hover:text-redcol'>
             <Link to={`${id}`}>

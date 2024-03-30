@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from '../components/Card.jsx';
-import  Search  from '../components/Search.jsx';
-import  DisplaySlider from '../components/DisplaySlider.jsx';
+import Search  from '../components/Search.jsx';
+import DisplaySlider from '../components/DisplaySlider.jsx';
 
 
 const Movies = () => {

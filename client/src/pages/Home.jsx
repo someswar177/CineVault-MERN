@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Card from '../components/Card.jsx';
 import CardPoster from '../components/CardPoster.jsx';
-import { useAuth } from '../AuthContext.jsx';
+// import { useAuth } from '../AuthContext.jsx';
 import  Search  from '../components/Search.jsx';
 import  DisplaySlider from '../components/DisplaySlider.jsx';
 
 const Home = () => {
 
-    const { user, token } = useAuth();
+    // const { user, token } = useAuth();
     const [trending, setTrending] = useState([]);
     const [topRated, setTopRated] = useState([]);
 
@@ -30,11 +30,11 @@ const Home = () => {
         return res.data;
     }
 
-    const searchMovies = async (query) => {
-        const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
-        const res = await axios.get(searchUrl);
-        return res.data.results;
-    };
+    // const searchMovies = async (query) => {
+    //     const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=${process.env.REACT_APP_API_KEY}&query=${query}`;
+    //     const res = await axios.get(searchUrl);
+    //     return res.data.results;
+    // };
 
 
 
@@ -58,7 +58,7 @@ const Home = () => {
 
     return (
         <div className='bg-bgdarkb min-w-full min-h-screen mt-18 pb-8 lg:mt-0'>
-            <Search searchResults={searchResults} setSearchResults={setSearchResults} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <Search setSearchResults={setSearchResults} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
             <div className='pt-14 text-white lg:pl-32 lg:pt-10'>
                 {isLoading ? (
                     <div className='flex items-center justify-center '>
